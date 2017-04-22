@@ -1,0 +1,8 @@
+flask
+flask_sqlalchemy
+flask_migrate
+flask_login
+flask_bcrypt
+flask_mail
+flask_uploads
+flask_pagedown
