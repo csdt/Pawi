@@ -2,7 +2,7 @@
 # -*-coding:utf-8 -*-
 
 
-from .. import app
+from .. import app, db
 
 import os.path
 import glob
