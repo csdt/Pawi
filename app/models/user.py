@@ -11,6 +11,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable = False)
     email = db.Column(db.String, nullable = False)
+    account_types = db.relationship("AccountType", backref = "owner", cascade = "all, delete-orphan")
 
     def __init__(self, name = "", email = ""):
         self.name = name
