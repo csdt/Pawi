@@ -6,6 +6,7 @@ from flask import Flask
 
 ### config
 app = Flask("Pawi")
+app.config.from_pyfile("config.py")
 
 ### Internal imports
 from .controllers import *
