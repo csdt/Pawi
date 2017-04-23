@@ -12,6 +12,9 @@ class User(db.Model):
     name = db.Column(db.String, nullable = False)
     email = db.Column(db.String, nullable = False)
     account_types = db.relationship("AccountType", backref = "owner", cascade = "all, delete-orphan")
+    accounts = db.relationship("Account", backref = "owner", cascade = "all, delete-orphan")
+    account_sharing_types = db.relationship("AccountSharingType", backref = "owner", cascade = "all, delete-orphan")
+    account_sharings = db.relationship("AccountSharing", backref = "recipient", cascade = "all, delete-orphan")
 
     def __init__(self, name = "", email = ""):
         self.name = name

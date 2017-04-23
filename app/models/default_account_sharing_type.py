@@ -2,11 +2,11 @@
 # -*-coding:utf-8 -*-
 
 from . import app, db
-__all__ = ["DefaultAccountType"]
+__all__ = ["DefaultAccountSharingType"]
 
 
-class DefaultAccountType(db.Model):
-    __tablename__ = "default_account_types"
+class DefaultAccountSharingType(db.Model):
+    __tablename__ = "default_account_sharing_types"
 
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable = False)
@@ -17,7 +17,7 @@ class DefaultAccountType(db.Model):
         self.description = description
 
     def __repr__(self):
-        return "<DefaultAccountType {}>".format(self.name)
+        return "<DefaultAccountSharingType {}>".format(self.name)
 
     def __str__(self):
         return self.name
