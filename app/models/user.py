@@ -11,10 +11,18 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable = False)
     email = db.Column(db.String, nullable = False)
+
+    # account
     account_types = db.relationship("AccountType", backref = "owner", cascade = "all, delete-orphan")
     accounts = db.relationship("Account", backref = "owner", cascade = "all, delete-orphan")
+
+    # account sharing
     account_sharing_types = db.relationship("AccountSharingType", backref = "owner", cascade = "all, delete-orphan")
     account_sharings = db.relationship("AccountSharing", backref = "recipient", cascade = "all, delete-orphan")
+
+    # transaction
+    transaction_types = db.relationship("TransactionType", backref = "owner", cascade = "all, delete-orphan")
+    transaction_tags = db.relationship("TransactionTag", backref = "owner", cascade = "all, delete-orphan")
 
     def __init__(self, name = "", email = ""):
         self.name = name
