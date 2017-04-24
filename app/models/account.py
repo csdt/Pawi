@@ -29,5 +29,5 @@ class Account(db.Model):
         return "<Account {}.{}>".format(self.owner, self.name)
 
     def __str__(self):
-        return self.name
+        return "{}.{}".format(self.owner, self.name)
 
