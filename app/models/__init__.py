@@ -4,6 +4,8 @@
 from .. import admin, app, db
 from flask_admin.contrib.sqla import ModelView
 
+# currency
+from .currency import *
 
 # user
 from .user import *
@@ -24,6 +26,9 @@ from .transaction_type import *
 from .default_transaction_tag import *
 from .transaction_tag import *
 from .transaction import *
+
+# currency
+admin.add_view(ModelView(Currency, db.session))
 
 # user
 admin.add_view(ModelView(User, db.session))
