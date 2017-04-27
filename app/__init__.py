@@ -18,6 +18,10 @@ admin.init_app(app)
 
 migrate = Migrate(app, db)
 
+is_sqlite = getattr(app.config, 'SQLALCHEMY_DATABASE_URI', '').startswith('sqlite:')
+migrate.init_app(app, db, render_as_batch=is_sqlite)
+
+
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 

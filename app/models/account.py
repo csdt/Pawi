@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 # -*-coding:utf-8 -*-
 
-from . import app, db
+from . import app, db, Currency
 import datetime
 __all__ = ["Account"]
 
@@ -15,6 +15,8 @@ class Account(db.Model):
     description = db.Column(db.Text, nullable = False, default = "")
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
     type_id = db.Column(db.Integer, db.ForeignKey('account_types.id'))
+    currency_id = db.Column(db.Integer, db.ForeignKey('currencies.id'), nullable = False)
+    currency = db.relationship("Currency")
     sharings = db.relationship("AccountSharing", backref = "account", cascade = "all, delete-orphan")
     
 
