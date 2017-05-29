@@ -16,7 +16,7 @@ class Account(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
     type_id = db.Column(db.Integer, db.ForeignKey('account_types.id'))
     currency_id = db.Column(db.Integer, db.ForeignKey('currencies.id'), nullable = False)
-    currency = db.relationship("Currency")
+    currency = db.relationship("Currency", lazy="joined")
     sharings = db.relationship("AccountSharing", backref = "account", cascade = "all, delete-orphan")
     
 
