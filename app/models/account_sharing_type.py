@@ -2,6 +2,8 @@
 # -*-coding:utf-8 -*-
 
 from . import app, db
+from sqlalchemy.orm.session import make_transient
+
 __all__ = ["AccountSharingType"]
 
 
@@ -19,8 +21,16 @@ class AccountSharingType(db.Model):
 
     def __str__(self):
         return self.name
+
     
     def create(self, **kwargs):
         sharing = AccountSharing(**kwargs)
         sharing.type = self
         return sharing
+
+    def copy(self, user = False):
+        sharingT = make_transient(self)
+        sharingT._oid = None
+        if user is not False:
+            sharingT.owner = user
+        return sharingT

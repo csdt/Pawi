@@ -24,3 +24,10 @@ class TransactionType(db.Model):
         transaction = Transaction(**kwargs)
         transaction.type = self
         return transaction
+
+    def copy(self, user = False):
+        transactionT = make_transient(self)
+        transactionT._oid = None
+        if user is not False:
+            transactionT.owner = user
+        return transactionT

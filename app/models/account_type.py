@@ -24,3 +24,10 @@ class AccountType(db.Model):
         account = Account(**kwargs)
         account.type = self
         return account
+
+    def copy(self, user = False):
+        accountT = make_transient(self)
+        accountT._oid = None
+        if user is not False:
+            accountT.owner = user
+        return accountT

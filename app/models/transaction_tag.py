@@ -20,3 +20,10 @@ class TransactionTag(db.Model):
     def __str__(self):
         return self.name
 
+
+    def copy(self, user = False):
+        tag = make_transient(self)
+        tag._oid = None
+        if user is not False:
+            tag.owner = user
+        return tag
