@@ -14,14 +14,13 @@ class TransactionType(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
     transactions = db.relationship("Transaction", backref = "type")
 
-    def __init__(self, name = "", description = None, owner = None):
-        self.name = name
-        self.description = description
-        self.owner = owner
-
     def __repr__(self):
         return "<TransactionType {}>".format(self.name)
 
     def __str__(self):
         return self.name
 
+    def create(self, **kwargs):
+        transaction = Transaction(**kwargs)
+        transaction.type = self
+        return transaction

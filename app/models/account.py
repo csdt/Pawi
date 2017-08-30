@@ -18,14 +18,6 @@ class Account(db.Model):
     currency_id = db.Column(db.Integer, db.ForeignKey('currencies.id'), nullable = False)
     currency = db.relationship("Currency", lazy="joined")
     sharings = db.relationship("AccountSharing", backref = "account", cascade = "all, delete-orphan")
-    
-
-    def __init__(self, name = None, **kwargs):
-        self.name = name
-        self.open_date = kwargs.get("open_date", None)
-        self.description = kwargs.get("description", None)
-        self.owner = kwargs.get("owner", None)
-        self.type = kwargs.get("type", None)
 
     def __repr__(self):
         return "<Account {}.{}>".format(self.owner, self.name)

@@ -15,14 +15,6 @@ class AccountSharing(db.Model):
     account_id = db.Column(db.Integer, db.ForeignKey('accounts.id'), nullable = False)
     recipient_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
     type_id = db.Column(db.Integer, db.ForeignKey('account_sharing_types.id'))
-    
-
-    def __init__(self, **kwargs):
-        self.start_date = kwargs.get("start_date", None)
-        self.end_date = kwargs.get("end_date", None)
-        self.account = kwargs.get("account", None)
-        self.recipient = kwargs.get("recipient", None)
-        self.type = kwargs.get("type", None)
 
     def __repr__(self):
         return "<AccountSharing {}.{} with {} ({})>".format(self.account.owner, self.account.name, self.recipient, self.type)

@@ -34,16 +34,6 @@ class Transaction(db.Model):
     debit_currency = association_proxy("debtor_account", "currency")
     credit_currency = association_proxy("creditor_account", "currency")
 
-
-
-    def __init__(self, name = None, **kwargs):
-        self.name = name
-        self.amount = kwargs.get("amount", None)
-        self.open_date = kwargs.get("open_date", None)
-        self.description = kwargs.get("description", None)
-        self.owner = kwargs.get("owner", None)
-        self.type = kwargs.get("type", None)
-
     def __repr__(self):
         return "<Transaction {}: {} -> {}>".format(self.debit_amount or self.credit_amount, self.debtor_account, self.creditor_account)
 

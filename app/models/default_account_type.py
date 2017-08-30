@@ -12,10 +12,6 @@ class DefaultAccountType(db.Model):
     name = db.Column(db.String, nullable = False)
     description = db.Column(db.Text, nullable = False, default = "")
 
-    def __init__(self, name = "", description = ""):
-        self.name = name
-        self.description = description
-
     def __repr__(self):
         return "<DefaultAccountType {}>".format(self.name)
 

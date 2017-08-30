@@ -7,3 +7,4 @@ flask_mail
 flask_uploads
 flask_pagedown
 flask_admin
+flask_script

@@ -24,12 +24,9 @@ class User(db.Model):
     transaction_types = db.relationship("TransactionType", backref = "owner", cascade = "all, delete-orphan")
     transaction_tags = db.relationship("TransactionTag", backref = "owner", cascade = "all, delete-orphan")
 
-    def __init__(self, name = "", email = ""):
-        self.name = name
-        self.email = email
-
     def __repr__(self):
         return "<User {}>".format(self.name)
 
     def __str__(self):
         return self.name
+

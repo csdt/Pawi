@@ -14,11 +14,6 @@ class TransactionTag(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
     #transactions = db.relationship("Transaction", backref = "tag")
 
-    def __init__(self, name = "", description = None, owner = None):
-        self.name = name
-        self.description = description
-        self.owner = owner
-
     def __repr__(self):
         return "<TransactionTag {}>".format(self.name)
 

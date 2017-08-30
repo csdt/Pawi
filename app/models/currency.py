@@ -20,13 +20,6 @@ class Currency(db.Model):
     group_by = db.Column(db.Integer, nullable = False, default = 3)
     grouping_separator = db.Column(db.String, nullable = False, default = " ")
 
-    
-
-    def __init__(self, iso = None, **kwargs):
-        self.iso = iso
-        for attr in ["name", "symbol", "left_symbol", "space_between", "decimals", "decimal_separator", "group_by", "grouping_separator"]:
-            setattr(self, attr, kwargs.get(attr, None))
-
     def __repr__(self):
         return "<Currency {} ({})>".format(self.symbol, self.iso)
 

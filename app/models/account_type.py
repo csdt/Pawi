@@ -14,14 +14,13 @@ class AccountType(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
     accounts = db.relationship("Account", backref = "type")
 
-    def __init__(self, name = "", description = None, owner = None):
-        self.name = name
-        self.description = description
-        self.owner = owner
-
     def __repr__(self):
         return "<AccountType {}>".format(self.name)
 
     def __str__(self):
         return self.name
 
+    def create(self, **kwargs):
+        account = Account(**kwargs)
+        account.type = self
+        return account
