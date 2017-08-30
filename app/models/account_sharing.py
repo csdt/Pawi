@@ -3,6 +3,7 @@
 
 from . import app, db
 import datetime
+from sqlalchemy.ext.associationproxy import association_proxy
 __all__ = ["AccountSharing"]
 
 
@@ -15,6 +16,7 @@ class AccountSharing(db.Model):
     account_id = db.Column(db.Integer, db.ForeignKey('accounts.id'), nullable = False)
     recipient_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
     type_id = db.Column(db.Integer, db.ForeignKey('account_sharing_types.id'))
+    name = association_proxy("type", "name")
 
     def __repr__(self):
         return "<AccountSharing {}.{} with {} ({})>".format(self.account.owner, self.account.name, self.recipient, self.type)
