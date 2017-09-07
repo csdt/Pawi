@@ -13,7 +13,7 @@ class AccountSharingType(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable = False)
     description = db.Column(db.Text, nullable = False, default = "")
-    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
+    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = True)
     accounts = db.relationship("AccountSharing", backref = "type")
 
     def __repr__(self):
